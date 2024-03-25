@@ -41,14 +41,14 @@ public class MockHaService implements HaService {
 
     //testes de falha
     public static String vazio =
-            "{ \"nomeDoProfessor\": , \n " +
-                    "\"horarioDeAtendimento\":, \n" +
-                    "\"periodo\": , \n " +
-                    "\"sala\":, \n " +
-                    "\"predio\": }";
-    public static String profErrado =
+            "{ \"nomeDoProfessor\": \" \", \n " +
+                    "\"horarioDeAtendimento\": \" \", \n" +
+                    "\"periodo\":\" \" , \n " +
+                    "\"sala\":\" \", \n " +
+                    "\"predio\":\" \" }";
+    public static String horaInvalida =
             "{ \"nomeDoProfessor\": \"Francisco\", \n " +
-                    "\"horarioDeAtendimento\": \"19h30\", \n" +
+                    "\"horarioDeAtendimento\": \"25h30\", \n" +
                     "\"periodo\": \"noturno\", \n " +
                     "\"sala\": \"1\", \n " +
                     "\"predio\": \"[1]\"}";
@@ -72,18 +72,25 @@ public class MockHaService implements HaService {
                     "\"sala\": \"20\", \n " +
                     "\"predio\": \"[10]\"}";
 
-    public static String SalaInvalidaPos =
+    public static String salaInvalidaPos =
             "{ \"nomeDoProfessor\": \"Joao\", \n " +
                     "\"horarioDeAtendimento\": \"21h30\", \n" +
                     "\"periodo\": \"noturno\", \n " +
                     "\"sala\": \"300\", \n " +
                     "\"predio\": \"[10]\"}";
-    public static String SalaInvalidaNeg =
+    public static String salaInvalidaNeg =
             "{ \"nomeDoProfessor\": \"Joao\", \n " +
                     "\"horarioDeAtendimento\": \"21h30\", \n" +
                     "\"periodo\": \"noturno\", \n " +
                     "\"sala\": \"-2\", \n " +
                     "\"predio\": \"[10]\"}";
+
+    public static String duplica =
+            "{ \"nomeDoProfessor\": \"Luma\", \n " +
+                    "\"horarioDeAtendimento\": \"19h30\", \n" +
+                    "\"periodo\": \"noturno\", \n " +
+                    "\"sala\": \"1\", \n " +
+                    "\"predio\": \"[1]\"}";
 
     @Override
     public String retornoHA(int professor) {
@@ -109,7 +116,7 @@ public class MockHaService implements HaService {
            return vazio;
        }
        else if(professor == 10){
-           return profErrado;
+           return horaInvalida;
        }
        else if(professor == 11){
            return perErrado;
@@ -119,6 +126,15 @@ public class MockHaService implements HaService {
        }
        else if(professor == 13){
            return predioInvalido;
+       }
+       else if(professor == 14){
+           return salaInvalidaNeg;
+       }
+       else if(professor == 15){
+           return salaInvalidaPos;
+       }
+       else if(professor == 16){
+           return duplica;
        }
        else return null;
     }

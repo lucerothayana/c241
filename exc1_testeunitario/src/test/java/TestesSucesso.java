@@ -56,10 +56,43 @@ public class TestesSucesso {
     }
 
     @Test
-    public void testeLenPredio(){
-        Professor testeProf = popularWeb.popularPagina(3);
-        //JsonArray predio = testeProf.getPredio();
-        //assertEquals(1, predio.size());
+    public void testeSalaErrada(){
+        Professor testeProf = popularWeb.popularPagina(1);
+        int sala = Integer.parseInt(testeProf.getSala());
+        String predioS = testeProf.getPredio();
+        predioS = predioS.replace("[", "");
+        predioS = predioS.replace("]", "");
+        int predio = Integer.parseInt(predioS);
+
+        boolean salaErrada = false;
+
+        switch (predio){
+            case 1:
+                if(sala>5)
+                    salaErrada = true;
+                break;
+            case 2:
+                if(sala<5 || sala>10)
+                    salaErrada = true;
+                break;
+            case 3:
+                if(sala<10 || sala>15)
+                    salaErrada = true;
+                break;
+            case 4:
+                if(sala<15 || sala>20)
+                    salaErrada = true;
+                break;
+            case 5:
+                if(sala<20 || sala>25)
+                    salaErrada = true;
+                break;
+            case 6:
+                if(sala<25 || sala>30)
+                    salaErrada = true;
+                break;
+        }
+        assertFalse(salaErrada);
     }
 
     @Test
