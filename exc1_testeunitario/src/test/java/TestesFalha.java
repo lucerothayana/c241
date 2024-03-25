@@ -1,6 +1,3 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.example.HaService;
 import org.example.PopularWeb;
 import org.example.Professor;
