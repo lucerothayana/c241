@@ -37,7 +37,8 @@ public class TestesFalha {
 
     //não passa, nao sei o pq, era pra ser null mesmo
     @Test
-    public void testeMatInvalida(){
+    public void testeMatInvalida() throws Exception{
+
         assertNull(popularWeb.popularPagina(100));
     }
 
